@@ -12,25 +12,22 @@ def test_main_1():
     # datastr = 'Kim \n 100 80 70 60\n Bill \n 100 90 80 60 \n Mary \n 90 80 70 100'
     # sys.stdin = io.StringIO(datastr)
 
+    ret = main.factorial(10)
+
     sys.stdout = sys.__stdout__
     print('Captured ', captureOut.getvalue())
     lines = captureOut.getvalue().split('\n')
     print(lines)
 
-    r = main.Rectangle(10, 20)
-    print(f'Height: {r.height} \t Width: {r.width}')
-
-    assert r.height == 10
-    assert r.width == 20
-
-    # regex_string = r'[\w,\W]*1'
-    # regex_string += r'[\w,\W]*3'
-    # regex_string += r'[\w,\W]*5'
+    # regex_string = r'[\w,\W]*Elapsed'
+    # regex_string += r'[\w,\W]*time'
     # regex_string += r'[\w,\W]*'
     # print(regex_string)
-    # res = re.search(regex_string, main.evenlist)
+    # res = re.search(regex_string, lines[1])
     # assert res != None
     # print(res.group())
+
+    assert ret == 362880
 
 
 def test_main_2():
@@ -39,17 +36,20 @@ def test_main_2():
     # datastr = 'Kim \n 100 80 70 60\n Bill \n 100 90 80 60 \n Mary \n 90 80 70 100'
     # sys.stdin = io.StringIO(datastr)
 
+    fact = main.deco_fact(main.factorial)
+    ret = fact(10)
+
     sys.stdout = sys.__stdout__
     print('Captured ', captureOut.getvalue())
     lines = captureOut.getvalue().split('\n')
     print(lines)
 
-    r = main.Rectangle(10, 20)
-    print(f'Height: {r.height} \t Width: {r.width}')
+    # regex_string = r'[\w,\W]*Elapsed'
+    # regex_string += r'[\w,\W]*time'
+    # regex_string += r'[\w,\W]*'
+    # print(regex_string)
+    # res = re.search(regex_string, lines[1])
+    # assert res != None
+    # print(res.group())
 
-    r._height = 100
-    r._width = 200
-    print(f'Height: {r.height} \t Width: {r.width}')
-    assert r._height == 100
-    assert r.width == 200
-    assert r.get_height() == 100
+    assert ret == 362880
